@@ -10,9 +10,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveMART">
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/LIVEMART">
+        <activity android:name=".Register">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+<!--        <activity-->
+<!--            android:name=".ui.login.LoginActivity"-->
+<!--            android:label="@string/LIVEMART">-->
+<!--&lt;!&ndash;            <intent-filter>&ndash;&gt;-->
+<!--&lt;!&ndash;                <action android:name="android.intent.action.MAIN" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <category android:name="android.intent.category.LAUNCHER" />&ndash;&gt;-->
+<!--&lt;!&ndash;            </intent-filter>&ndash;&gt;-->
+<!--        </activity>-->
+        <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,25 +35,27 @@
         </activity>
         <activity
             android:name=".VegDashboard"
-            android:label="@string/Vegetables"/>
+            android:label="@string/Vegetables" />
         <activity
             android:name=".FruitsDashboard"
             android:label="@string/Fruits" />
         <activity
             android:name=".MainDashboard"
             android:label="@string/MainDashboard">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
 
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
 
         </activity>
         <activity android:name=".SearchResultsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />

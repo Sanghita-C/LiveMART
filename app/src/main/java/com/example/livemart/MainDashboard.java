@@ -20,6 +20,7 @@ public class MainDashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_dashboard);
 
+        //Navigate to vegetables page
         CardView veg=(CardView) findViewById(R.id.Vegetables);
         veg.setOnClickListener(new View.OnClickListener()
         {
@@ -30,6 +31,7 @@ public class MainDashboard extends AppCompatActivity {
             }
         });
 
+        //Navigate to fruits page
         CardView fruits=(CardView) findViewById(R.id.Fruits);
         fruits.setOnClickListener(new View.OnClickListener()
         {
