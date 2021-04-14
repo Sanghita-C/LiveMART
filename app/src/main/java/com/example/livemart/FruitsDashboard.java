@@ -3,10 +3,13 @@ package com.example.livemart;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SearchView;
 
@@ -38,6 +41,15 @@ public class FruitsDashboard extends AppCompatActivity {
         GridView gridView = findViewById(R.id.grid_view);
         customAdapter = new CustomAdapter(this, R.layout.custom_item, itemsList);
         gridView.setAdapter(customAdapter);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Intent intent=new Intent(getApplicationContext(),Item_view.class);
+                intent.putExtra("item",customAdapter.items_list.get(position));
+                startActivity(intent);
+            }
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

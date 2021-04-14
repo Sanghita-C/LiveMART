@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,9 +24,9 @@ public class Item_view extends AppCompatActivity {
 
         Intent intent=getIntent();
 
-        if(intent.getExtras()!=null)
-        {
+
             item=(Items) intent.getSerializableExtra("item");
+            Log.v(item.getTitle(),"title");
             image.setImageResource(item.getImage_id());
             title.setText(item.getTitle());
             price.setText(item.getPrice());
@@ -41,7 +42,7 @@ public class Item_view extends AppCompatActivity {
                 stock.setTextColor(Color.parseColor("#FF0000"));
             }
 
-        }
+
     }
 
 }

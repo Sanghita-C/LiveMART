@@ -41,14 +41,14 @@ public class VegDashboard extends AppCompatActivity {
         customAdapter = new CustomAdapter(this, R.layout.custom_item, itemsList);
         gridView.setAdapter(customAdapter);
 
-//        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-//
-//                startActivity(new Intent(VegDashboard.this, Item_view.class).putExtra("item",customAdapter.items_list_filtered.get(position)));
-//
-//            }
-//        });
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Intent intent=new Intent(getApplicationContext(),Item_view.class);
+                intent.putExtra("item",customAdapter.items_list.get(position));
+                startActivity(intent);
+            }
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
