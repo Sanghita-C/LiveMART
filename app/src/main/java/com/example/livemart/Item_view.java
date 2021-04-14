@@ -26,7 +26,6 @@ public class Item_view extends AppCompatActivity {
 
 
             item=(Items) intent.getSerializableExtra("item");
-            Log.v(item.getTitle(),"title");
             image.setImageResource(item.getImage_id());
             title.setText(item.getTitle());
             price.setText(item.getPrice());
