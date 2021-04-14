@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Item_view">
+    <ImageView
+        android:id="@+id/ItemImage"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:src="@color/white"
+        android:layout_margin="20dp"/>
+
+            <TextView
+                android:id="@+id/ItemTitle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Karela"
+                android:textSize="30sp"
+                android:gravity="center"/>
+            <TextView
+                android:id="@+id/ItemCost"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Rs 60"
+                android:textSize="25sp"
+                android:gravity="center"/>
+            <TextView
+                android:id="@+id/ItemStock"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="IN STOCK"
+                android:textSize="18sp"
+                android:textColor="#00FF00"
+                android:gravity="center"/>
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="ADD TO CART"
+                android:textSize="20sp"/>
+
+</LinearLayout>

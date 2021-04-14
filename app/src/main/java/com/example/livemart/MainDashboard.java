@@ -19,6 +19,7 @@ public class MainDashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_dashboard);
+        handleIntent(getIntent());
 
         //Navigate to vegetables page
         CardView veg=(CardView) findViewById(R.id.Vegetables);
@@ -58,5 +59,20 @@ public class MainDashboard extends AppCompatActivity {
                 searchManager.getSearchableInfo(getComponentName()));
 
         return true;
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        handleIntent(intent);
+    }
+
+    private void handleIntent(Intent intent) {
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            // Do work using string
+
+            System.out.println(query);
+        }
     }
 }
