@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 public class SearchResultsActivity extends Activity {
@@ -23,7 +24,7 @@ public class SearchResultsActivity extends Activity {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             //use the query to search your data somehow
-
+            System.out.println(query);
         }
     }
 }
