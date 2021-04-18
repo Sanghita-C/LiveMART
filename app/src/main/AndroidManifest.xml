@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveMART">
-        <activity android:name=".Item_view"></activity>
+        <activity android:name=".CartActivity"></activity>
+        <activity android:name=".Item_view" />
         <activity android:name=".Register">
 
             <!-- <intent-filter> -->

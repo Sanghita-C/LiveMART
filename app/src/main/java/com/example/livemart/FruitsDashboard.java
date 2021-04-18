@@ -26,15 +26,10 @@ public class FruitsDashboard extends AppCompatActivity {
         setContentView(R.layout.activity_fruits_dashboard);
 
         List<Items> itemsList = new ArrayList<>();
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "image_1","60",true));
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "image_2","70",false));
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "image_3","60",true));
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "image_1","100",false));
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "image_1","60",true));
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "image_1","290",true));
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "image_1","60",false));
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "image_1","450",true));
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "image_1","60",true));
+        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "apple", 60, true,0));
+        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "apple", 60, true,0));
+        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "apple", 60, true,0));
+        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "apple", 60, true,0));
 
 
 

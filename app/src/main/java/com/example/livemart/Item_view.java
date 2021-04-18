@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Item_view extends AppCompatActivity {
     Items item;
@@ -21,6 +24,7 @@ public class Item_view extends AppCompatActivity {
         TextView title=findViewById(R.id.ItemTitle);
         TextView price=findViewById(R.id.ItemCost);
         TextView stock=findViewById(R.id.ItemStock);
+        Button addItem=findViewById(R.id.add_to_cart);
 
         Intent intent=getIntent();
 
@@ -28,7 +32,7 @@ public class Item_view extends AppCompatActivity {
             item=(Items) intent.getSerializableExtra("item");
             image.setImageResource(item.getImage_id());
             title.setText(item.getTitle());
-            price.setText(item.getPrice());
+            price.setText(String.valueOf(item.getPrice()));
             boolean inStock=item.getInStock();
             if(inStock)
             {
@@ -41,7 +45,44 @@ public class Item_view extends AppCompatActivity {
                 stock.setTextColor(Color.parseColor("#FF0000"));
             }
 
+        //For add to cart button
+        addItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(item.getInStock())
+                {
+                    if(CustomAdapter.selecteditems.contains(item)){
+                        Toast.makeText(getApplicationContext(),
+                                "Item present in cart. Please go to cart.",
+                                Toast.LENGTH_LONG)
+                                .show();
+                    }else{
+                        //List does not contains item you can add item here.
+                        CustomAdapter.selecteditems.add(item);
+
+                        Toast.makeText(getApplicationContext(),
+                                "Item added to cart",
+                                Toast.LENGTH_LONG)
+                                .show();
+                        Intent i=new Intent(getApplicationContext(),CartActivity.class);
+                        i.putExtra("item",item);
+                        startActivity(i);
+                    }
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),
+                            "Item not in stock.Check again after a few days",
+                            Toast.LENGTH_LONG)
+                            .show();
+                }
+
+            }
+        });
+
 
     }
+    //For adding to cart
+
 
 }

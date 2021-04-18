@@ -22,6 +22,7 @@ public class CustomAdapter extends ArrayAdapter<Items> implements Filterable {
     Context active;
     List<Items> items_list = new ArrayList<>();
     List<Items> items_list_filtered=new ArrayList<>();
+    public static List<Items> selecteditems=new ArrayList<>();;
     int custom_layout_id;
     public CustomAdapter(Context context, int resource, List<Items> objects)
     {
@@ -63,7 +64,7 @@ public class CustomAdapter extends ArrayAdapter<Items> implements Filterable {
 
         img.setImageResource(item.getImage_id());
         title.setText(item.getTitle());
-        price.setText(item.getPrice());
+        price.setText(String.valueOf(item.getPrice()));
         boolean inStock=item.getInStock();
         if(inStock)
         {
@@ -117,4 +118,10 @@ public class CustomAdapter extends ArrayAdapter<Items> implements Filterable {
         };
         return filter;
     }
+
+
+    //For cart
+
+
+
 }

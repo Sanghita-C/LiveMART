@@ -40,18 +40,13 @@
                 android:textColor="#00FF00"
                 android:gravity="center"/>
             <Button
+                android:id="@+id/add_to_cart"
                 android:layout_width="200dp"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layout_gravity="center"
                 android:text="ADD TO CART"
                 android:textSize="20sp"/>
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_gravity="center"
-        android:text="GO TO CART"
-        android:textSize="20sp"/>
+
 
 </LinearLayout>
