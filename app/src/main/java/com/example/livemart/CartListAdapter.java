@@ -24,6 +24,19 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
     private Activity context;
     int lastPosition=0;
 
+    //Related to add,remove,reduce buttons
+    private OnItemClickListener mListener;
+    public interface OnItemClickListener{
+        void onDeleteClick(int position);
+        void onQuantityClick(int position,boolean sign);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener)
+    {
+        mListener=listener;
+    }
+
+    //Constructor
     public CartListAdapter(Activity context, List<Items> callListResponses)
     {
         super();
@@ -36,7 +49,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
     public ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(context).inflate(R.layout.list_row, parent, false);
 
-        return new ViewHolder(itemView);
+        return new ViewHolder(itemView,mListener);
     }
 
     @Override
@@ -44,12 +57,10 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
         final Items call = callListResponses.get(position);
 
         holder.itemname.setText(call.getTitle());
-        holder.itemprice.setText(" Rs"+call.getPrice());
-        holder.tv_quantity.setText(String.valueOf(call.getQuantity()+1));
+        holder.itemprice.setText(" Rs "+" " + call.getPrice());
+        holder.tv_quantity.setText(String.valueOf(call.getQuantity()));
 
-    //        holder.cart_minus_img.setOnClickListener(new QuantityListener(context, holder.tv_quantity,call,false));
-//        holder.cart_plus_img.setOnClickListener(new QuantityListener(context, holder.tv_quantity,call,true));
-//        holder.img_deleteitem.setOnClickListener(new DeleteItemListener(context,call,this));
+
     }
 
     //Animating single element
@@ -77,7 +88,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
         public ImageView cart_minus_img, cart_plus_img,img_deleteitem;
 
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(View itemView,OnItemClickListener listener) {
             super(itemView);
             cart_minus_img=(ImageView) itemView.findViewById(R.id.cart_minus_img);
             cart_plus_img=(ImageView) itemView.findViewById(R.id.cart_plus_img);
@@ -85,6 +96,63 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
             itemname=(TextView) itemView.findViewById(R.id.itemname);
             itemprice=(TextView) itemView.findViewById(R.id.itemprice);
             tv_quantity=(TextView) itemView.findViewById(R.id.item_quantity);
+
+
+            //Click listener for deleting from cart
+            img_deleteitem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener!=null)
+                    {
+                        int position=getAdapterPosition();
+                        if(position!=RecyclerView.NO_POSITION)
+                        {
+                            listener.onDeleteClick(position);
+                        }
+                        CartActivity.calculateTotal();
+                    }
+
+                }
+            });
+
+            //Click listener for reducing quantitiy
+            cart_minus_img.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener!=null)
+                    {
+                        int position=getAdapterPosition();
+                        if(position!=RecyclerView.NO_POSITION)
+                        {
+                            if(CustomAdapter.selecteditems.get(position).getQuantity()==0)
+                            {
+                                listener.onDeleteClick(position);
+                            }
+                            else
+                                listener.onQuantityClick(position,false);
+                        }
+                        CartActivity.calculateTotal();
+                    }
+
+                }
+            });
+
+            //Click listener for increasing  quantitiy
+            cart_plus_img.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener!=null)
+                    {
+                        int position=getAdapterPosition();
+                        if(position!=RecyclerView.NO_POSITION)
+                        {
+                            listener.onQuantityClick(position,true);
+                        }
+                        CartActivity.calculateTotal();
+                    }
+
+                }
+            });
 
         }
     }

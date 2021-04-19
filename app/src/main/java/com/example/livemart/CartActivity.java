@@ -49,7 +49,34 @@ public class CartActivity extends AppCompatActivity {
         cartListAdapter = new CartListAdapter(CartActivity.this,CustomAdapter.selecteditems);
         recycler_itemList.setAdapter(cartListAdapter);
 
-        getIntentData();
+
+
+        //Handling clicks on cart item
+        cartListAdapter.setOnItemClickListener(new CartListAdapter.OnItemClickListener() {
+            @Override
+            public void onDeleteClick(int position) {
+                CustomAdapter.selecteditems.remove(position);
+                cartListAdapter.notifyDataSetChanged();
+                Toast.makeText(getApplicationContext(),
+                        "Item removed from cart",
+                        Toast.LENGTH_LONG)
+                        .show();
+            }
+
+            @Override
+            public void onQuantityClick(int position, boolean sign) {
+                int quant=CustomAdapter.selecteditems.get(position).getQuantity();
+                if(sign)
+                {
+                    quant++;
+                }
+                else {
+                    quant--;
+                }
+                CustomAdapter.selecteditems.get(position).setQuantity(quant);
+                cartListAdapter.notifyDataSetChanged();
+            }
+        });
 
         calculateTotal();
     }
@@ -67,21 +94,20 @@ public class CartActivity extends AppCompatActivity {
         }
     }
 
-    private void getIntentData(){
-        if(getIntent()!=null && getIntent().getExtras()!=null){
-            calculateTotal();
-        }
-    }
-
+    //Calculate total amount for order
     public static void calculateTotal(){
         int i=0;
         total=0;
         while(i<CustomAdapter.selecteditems.size()){
-            total=total + ( (CustomAdapter.selecteditems.get(i).getPrice()) * (CustomAdapter.selecteditems.get(i).getQuantity()));
+            total+= CustomAdapter.selecteditems.get(i).getPrice() * CustomAdapter.selecteditems.get(i).getQuantity();
             i++;
         }
-        tv_total.setText(String.format("Rs %s", String.valueOf(total)));
+        String s="Rs "+String.valueOf(total);
+        tv_total.setText(s);
     }
+
+
+    //The below functions to be used for placing order
 
 //    public void insertOrder(View view){
 //

@@ -20,6 +20,12 @@ public class Item_view extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_view);
 
+        androidx.appcompat.app.ActionBar actionBar=getSupportActionBar();
+        if(actionBar!=null){
+//            actionBar.setHomeButtonEnabled(true);
+            actionBar.setTitle("Item");
+        }
+
         ImageView image=findViewById(R.id.ItemImage);
         TextView title=findViewById(R.id.ItemTitle);
         TextView price=findViewById(R.id.ItemCost);
@@ -32,7 +38,7 @@ public class Item_view extends AppCompatActivity {
             item=(Items) intent.getSerializableExtra("item");
             image.setImageResource(item.getImage_id());
             title.setText(item.getTitle());
-            price.setText(String.valueOf(item.getPrice()));
+            price.setText(String.format("Rs %s", String.valueOf(item.getPrice())));
             boolean inStock=item.getInStock();
             if(inStock)
             {
@@ -59,14 +65,11 @@ public class Item_view extends AppCompatActivity {
                     }else{
                         //List does not contains item you can add item here.
                         CustomAdapter.selecteditems.add(item);
-
                         Toast.makeText(getApplicationContext(),
                                 "Item added to cart",
                                 Toast.LENGTH_LONG)
                                 .show();
-                        Intent i=new Intent(getApplicationContext(),CartActivity.class);
-                        i.putExtra("item",item);
-                        startActivity(i);
+
                     }
                 }
                 else

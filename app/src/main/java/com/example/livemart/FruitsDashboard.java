@@ -26,10 +26,10 @@ public class FruitsDashboard extends AppCompatActivity {
         setContentView(R.layout.activity_fruits_dashboard);
 
         List<Items> itemsList = new ArrayList<>();
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "apple", 60, true,0));
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "apple", 60, true,0));
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "apple", 60, true,0));
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "apple", 60, true,0));
+        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "apple", 60, true,1));
+        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "apple", 60, true,1));
+        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "apple", 60, true,1));
+        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "apple", 60, true,1));
 
 
 
@@ -71,10 +71,16 @@ public class FruitsDashboard extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
         int id=item.getItemId();
         if(id==R.id.search)
         {
             return true;
+        }
+        else if(id==R.id.cart_icon)
+        {
+            Intent i=new Intent(FruitsDashboard.this,CartActivity.class);
+            startActivity(i);
         }
         return super.onOptionsItemSelected(item);
     }

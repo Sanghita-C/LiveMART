@@ -64,7 +64,7 @@ public class CustomAdapter extends ArrayAdapter<Items> implements Filterable {
 
         img.setImageResource(item.getImage_id());
         title.setText(item.getTitle());
-        price.setText(String.valueOf(item.getPrice()));
+        price.setText(String.format("Rs %s", String.valueOf(item.getPrice())));
         boolean inStock=item.getInStock();
         if(inStock)
         {
@@ -99,7 +99,7 @@ public class CustomAdapter extends ArrayAdapter<Items> implements Filterable {
                     List<Items> resultData=new ArrayList<>();
                     for(Items item:items_list)
                     {
-                        if(item.getTitle().contains(query))
+                        if(item.getTitle().toLowerCase().contains(query))
                         {
                             resultData.add(item);
                         }
