@@ -41,4 +41,5 @@
         <item>Retailer</item>
         <item>Wholesaler</item>
     </string-array>
+    <string name="title_activity_maps">Map</string>
 </resources>
