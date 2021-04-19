@@ -28,9 +28,9 @@ public class MainDashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_dashboard);
         List<MainItems> itemsList = new ArrayList<>();
-        itemsList.add(new MainItems(R.drawable.ic_baseline_search_24, "vegetables"));
-        itemsList.add(new MainItems(R.drawable.ic_baseline_search_24, "fruits"));
-        itemsList.add(new MainItems(R.drawable.ic_baseline_search_24, "apple"));
+        itemsList.add(new MainItems(R.drawable.ic_baseline_search_24, "Vegetables"));
+        itemsList.add(new MainItems(R.drawable.ic_baseline_search_24, "Fruits"));
+        itemsList.add(new MainItems(R.drawable.ic_baseline_search_24, "Readymade"));
         itemsList.add(new MainItems(R.drawable.ic_baseline_search_24, "apple"));
         itemsList.add(new MainItems(R.drawable.ic_baseline_search_24, "apple"));
         itemsList.add(new MainItems(R.drawable.ic_baseline_search_24, "apple"));
@@ -47,12 +47,12 @@ public class MainDashboard extends AppCompatActivity {
                 MainItems item=customAdapter.items_list_filtered.get(position);
                 String query=item.getTitle().toLowerCase();
                 Intent intent;
-                if(query=="vegetables")
+                if(query.equalsIgnoreCase("vegetables"))
                 {
                     intent=new Intent(getApplicationContext(),VegDashboard.class);
                     startActivity(intent);
                 }
-                else if(query=="fruits")
+                else if(query.equalsIgnoreCase("fruits"))
                 {
                     intent=new Intent(getApplicationContext(),FruitsDashboard.class);
                     startActivity(intent);
@@ -91,6 +91,11 @@ public class MainDashboard extends AppCompatActivity {
         if(id==R.id.search)
         {
             return true;
+        }
+        else if(id==R.id.cart_icon)
+        {
+            Intent i=new Intent(MainDashboard.this,CartActivity.class);
+            startActivity(i);
         }
         return super.onOptionsItemSelected(item);
     }

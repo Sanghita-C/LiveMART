@@ -84,7 +84,7 @@ public class MainAdapter extends ArrayAdapter<MainItems> implements Filterable {
                     List<MainItems> resultData=new ArrayList<>();
                     for(MainItems item:items_list)
                     {
-                        if(item.getTitle().contains(query))
+                        if(item.getTitle().toLowerCase().contains(query))
                         {
                             resultData.add(item);
                         }

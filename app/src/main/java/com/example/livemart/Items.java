@@ -3,8 +3,8 @@ package com.example.livemart;
 import java.io.Serializable;
 
 public class Items implements Serializable {
-    private int image_id;
-    private String text,price;
+    private int image_id,Quantity,price;
+    private String text;
     private boolean inStock;
 
     public int getImage_id()
@@ -26,9 +26,13 @@ public class Items implements Serializable {
         this.text = text;
     }
 
-    public String getPrice()
+    public int getPrice()
     {
-        return "Rs." +price;
+        return price;
+    }
+    public void setPrice(int price)
+    {
+        this.price = price;
     }
 
     public boolean  getInStock()
@@ -36,12 +40,23 @@ public class Items implements Serializable {
         return inStock;
     }
 
+    public int getQuantity() {
+        return Quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        Quantity = quantity;
+    }
+
+
+
     //Constructor
-    Items(int img, String text, String price, boolean stock)
+    Items(int img, String text, int price, boolean stock,int quantity)
     {
         image_id = img;
         this.text = text;
         this.price=price;
         this.inStock=stock;
+        this.Quantity=quantity;
     }
 }

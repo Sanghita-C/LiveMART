@@ -36,6 +36,8 @@
     <string name="location">Location</string>
     <string name="Categories">Categories</string>
     <string name="search_products">Search Products</string>
+    <string name="rs_0">Rs 0</string>
+    <string name="place_order">Place Order</string>
     <string-array name="dropdown">
         <item>Customer</item>
         <item>Retailer</item>

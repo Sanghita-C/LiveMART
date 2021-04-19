@@ -26,15 +26,12 @@ public class VegDashboard extends AppCompatActivity {
         setContentView(R.layout.activity_veg_dashboard);
 
         List<Items> itemsList = new ArrayList<>();
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "apple", "60", true));
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "mango", "70", false));
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "karela", "60", true));
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "image_1", "100", false));
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "image_1", "60", true));
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "image_1", "290", true));
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "image_1", "60", false));
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "image_1", "450", true));
-        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "image_1", "60", true));
+        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "Karela", 60, true,1));
+        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "Brinjal", 60, false,1));
+        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "apple", 60, true,1));
+        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "apple", 60, true,1));
+        itemsList.add(new Items(R.drawable.ic_baseline_search_24, "apple", 60, true,1));
+
 
 
         GridView gridView = findViewById(R.id.grid_view);
@@ -79,6 +76,11 @@ public class VegDashboard extends AppCompatActivity {
         if(id==R.id.search)
         {
             return true;
+        }
+        else if(id==R.id.cart_icon)
+        {
+            Intent i=new Intent(VegDashboard.this,CartActivity.class);
+            startActivity(i);
         }
         return super.onOptionsItemSelected(item);
     }
