@@ -8,7 +8,8 @@
     android:paddingStart="40dp"
     android:paddingEnd="40dp"
     android:orientation="vertical"
-    tools:context=".Register">
+    tools:context=".Register"
+    tools:ignore="ExtraText">
 
     <EditText
         android:id="@+id/username"
@@ -16,6 +17,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:hint="Username"
+        android:textAlignment="viewStart"/>
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Email"
         android:textAlignment="viewStart"/>
 
     <EditText
@@ -35,23 +44,27 @@
         android:hint="@string/re_enter_password"
         android:inputType="textPassword"
         android:textAlignment="viewStart"/>
-    <Spinner
-        android:id="@+id/type_spinner"
+
+    <EditText
+        android:id="@+id/entity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:hint="Customer/Retailer"
+        android:textAlignment="viewStart"/>
+
+<!--        <Spinner-->
+<!--            android:id="@+id/type_spinner"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="30dp"/>-->
+
 <!--    <EditText-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
 <!--        android:layout_marginTop="20dp"-->
-<!--        android:hint="Select"-->
+<!--        android:hint="@string/location"-->
 <!--        android:textAlignment="viewStart"/>-->
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="@string/location"
-        android:textAlignment="viewStart"/>
     <Button
         android:id="@+id/signUp"
         android:layout_width="match_parent"
@@ -59,10 +72,5 @@
         android:text="SIGN UP"
         android:gravity="center"
         android:layout_marginTop="100dp"/>
-    <ProgressBar
-        android:id="@+id/progressbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="gone" />
+
 </LinearLayout>

@@ -10,8 +10,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.SearchView;
+import android.widget.Toast;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +36,9 @@ public class VegDashboard extends AppCompatActivity {
         itemsList.add(new Items(R.drawable.ic_baseline_search_24, "apple", 60, true,1));
         itemsList.add(new Items(R.drawable.ic_baseline_search_24, "apple", 60, true,1));
 
-
+//        Intent i=getIntent();
+//        JSONObject jsonObject = new JSONObject(i.getStringExtra("key"));
+//        Toast.makeText(Another_Activity.this, ""+jsonObject.get("Your JSON VALUE"), Toast.LENGTH_SHORT).show();
 
         GridView gridView = findViewById(R.id.grid_view);
         customAdapter = new CustomAdapter(this, R.layout.custom_item, itemsList);
@@ -46,6 +52,16 @@ public class VegDashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Adding new item intent -retailer side
+        Intent intent=getIntent();
+        if(intent.getExtras()!=null && intent.getExtras().size()==2)
+        {
+            String name=intent.getStringExtra("name");
+            int cost=intent.getIntExtra("cost",0);
+            itemsList.add(new Items(R.drawable.ic_baseline_search_24, name,cost, true,1));
+        }
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

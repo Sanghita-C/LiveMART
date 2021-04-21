@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,6 +79,17 @@ public class CartActivity extends AppCompatActivity {
             }
         });
 
+        Gson gson = new Gson();
+        jsonCartList = gson.toJson(CustomAdapter.selecteditems);
+        Button placeOrder=(Button) findViewById(R.id.btn_placeorder);
+        placeOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), VegDashboard.class);
+                i.putExtra("key", jsonCartList.toString());
+                startActivity(i);
+            }
+        });
         calculateTotal();
     }
 
@@ -115,14 +127,14 @@ public class CartActivity extends AppCompatActivity {
 //
 //            Gson gson = new Gson();
 //            jsonCartList = gson.toJson(CustomAdapter.selecteditems);
-//
+//            Log.v("message",jsonCartList);
 //            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
 //                @Override
 //                public void onClick(DialogInterface dialog, int which) {
 //                    switch (which){
 //                        case DialogInterface.BUTTON_POSITIVE:
 //                            //Yes button clicked
-////                            placeOrderRequest();
+//                            placeOrderRequest();
 //                            break;
 //
 //                        case DialogInterface.BUTTON_NEGATIVE:
@@ -142,17 +154,17 @@ public class CartActivity extends AppCompatActivity {
 //
 //
 //    }
-
-
-
-
-
-
+//
+//
+//
+//
+//
+//
 //    private void placeOrderRequest(){
 //        //Send Request to Server with required Parameters
 //    /*
 //   jsonCartList - Consists of Objects of all product selected.
 //    */
-//
+//        Log.v("message","hello");
 //    }
 }

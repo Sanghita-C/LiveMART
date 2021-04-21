@@ -2,12 +2,8 @@ package com.example.livemart;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,7 +15,6 @@ import android.widget.GridView;
 import android.widget.SearchView;
 
 import com.facebook.AccessToken;
-import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -28,13 +23,11 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserInfo;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainDashboard extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
+public class RetailerMainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
     private Button logout;
     private GoogleApiClient googleApiClient;
     private GoogleSignInOptions gso;
@@ -43,7 +36,7 @@ public class MainDashboard extends AppCompatActivity implements GoogleApiClient.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_dashboard);
+        setContentView(R.layout.activity_retailer_main);
 
         List<MainItems> itemsList = new ArrayList<>();
         itemsList.add(new MainItems(R.drawable.ic_baseline_search_24, "Vegetables"));
@@ -55,7 +48,7 @@ public class MainDashboard extends AppCompatActivity implements GoogleApiClient.
 
 
 
-        GridView gridView = findViewById(R.id.maingrid_view);
+        GridView gridView = findViewById(R.id.retailer_maingrid_view);
         customAdapter = new MainAdapter(this, R.layout.custom_maindashboard, itemsList);
         gridView.setAdapter(customAdapter);
 
@@ -79,11 +72,20 @@ public class MainDashboard extends AppCompatActivity implements GoogleApiClient.
             }
         });
 
+        //Add item
+        Button addItem=findViewById(R.id.retailer_addItem);
+        addItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),RetailerAddItem.class));
+            }
+        });
+
 
         //Logging out
         gso=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googleApiClient=new GoogleApiClient.Builder(this).enableAutoManage(this,  this).addApi(Auth.GOOGLE_SIGN_IN_API,gso).build();
-        logout=findViewById(R.id.logout);
+        logout=findViewById(R.id.retailer_logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,11 +110,10 @@ public class MainDashboard extends AppCompatActivity implements GoogleApiClient.
             }
         });
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main_dashboard, menu);
+        inflater.inflate(R.menu.retailer_main, menu);
 
         SearchView searchView =
                 (SearchView) menu.findItem(R.id.search).getActionView();
@@ -139,11 +140,13 @@ public class MainDashboard extends AppCompatActivity implements GoogleApiClient.
         {
             return true;
         }
-        else if(id==R.id.cart_icon)
+        else if(id==R.id.viewOrders)
         {
-            Intent i=new Intent(MainDashboard.this,CartActivity.class);
+            //Go to view orders
+            Intent i=new Intent(RetailerMainActivity.this,CartActivity.class);
             startActivity(i);
         }
+
         return super.onOptionsItemSelected(item);
     }
 

@@ -53,8 +53,6 @@ public class MainAdapter extends ArrayAdapter<MainItems> implements Filterable {
 
         ImageView img = v.findViewById(R.id.VegImage);
         TextView title = v.findViewById(R.id.VegTitle);
-        TextView price= v.findViewById(R.id.VegCost);
-        TextView stock= v.findViewById(R.id.VegStock);
 
         // get the item using the position param
         MainItems item = items_list_filtered.get(position);

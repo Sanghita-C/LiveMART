@@ -5,27 +5,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VegDashboard">
+    tools:context=".RetailerMainActivity">
 
     <GridView
-        android:id="@+id/maingrid_view"
+        android:id="@+id/retailer_maingrid_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:horizontalSpacing="10dp"
         android:numColumns="2"
         android:verticalSpacing="10dp"
         android:layout_marginHorizontal="10dp"
-        app:layout_constraintBottom_toTopOf="@id/logout"
+        app:layout_constraintBottom_toTopOf="@id/retailer_logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <Button
-        android:id="@+id/logout"
+        android:id="@+id/retailer_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/retailer_addItem"
+        android:text="LOG OUT"
+        android:textSize="18sp"/>
+    <Button
+        android:id="@+id/retailer_addItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="LOG OUT"
-        android:textSize="18sp"/>
+        android:text="ADD ITEM"
+        android:textSize="16sp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

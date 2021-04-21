@@ -57,7 +57,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
         final Items call = callListResponses.get(position);
 
         holder.itemname.setText(call.getTitle());
-        holder.itemprice.setText(" Rs "+" " + call.getPrice());
+        holder.itemprice.setText(" Rs "+ call.getPrice());
         holder.tv_quantity.setText(String.valueOf(call.getQuantity()));
 
 

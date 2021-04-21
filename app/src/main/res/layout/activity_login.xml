@@ -10,40 +10,34 @@
     android:padding="16dp"
     tools:context=".Login">
 
-    <RelativeLayout
+
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/register_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/register"
-            android:textStyle="bold"
-            android:textSize="12sp"
-            android:layout_alignParentEnd="true"/>
-    </RelativeLayout>
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:src="@drawable/common_google_signin_btn_icon_dark_focused"
+        android:layout_gravity="center"
+        />
 
 
     <EditText
         android:id="@+id/username"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="96dp"
-        android:layout_marginEnd="24dp"
+        android:layout_margin="30dp"
         android:hint="@string/username"
         android:inputType="textEmailAddress"
-        android:selectAllOnFocus="true"/>
+        android:selectAllOnFocus="true" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:hint="@string/prompt_password"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionDone"
@@ -57,59 +51,74 @@
         android:layout_gravity="center"
         android:text="@string/sign_in"
         android:textSize="12sp"/>
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:text="@string/register"
+        android:textSize="12sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="5"
         android:orientation="vertical"
-        android:gravity="center"
-        android:layout_weight="6">
+        android:gravity="center">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/or"
-            android:textSize="15sp"
-            android:layout_marginBottom="15dp"
-            android:gravity="center_horizontal"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/sign_in_with"
+            android:layout_marginTop="20dp"
+            android:text="OR"
             android:textSize="18sp"
             android:gravity="center_horizontal"/>
-        <LinearLayout
-            android:layout_width="match_parent"
+
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/fb_login"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="30dp">
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/fb" />
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/gmail"/>
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/insta"/>
-        </LinearLayout>
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp" />
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/google_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp" />
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="30dp">-->
+<!--            <ImageView-->
+<!--                android:id="@+id/fb_login"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:src="@drawable/common_google_signin_btn_icon_dark_focused" />-->
+<!--            <ImageView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:src="@drawable/common_google_signin_btn_icon_dark"/>-->
+<!--            <ImageView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:src="@drawable/common_google_signin_btn_icon_dark"/>-->
+<!--            -->
+<!--        </LinearLayout>-->
+
+
 
     </LinearLayout>
 
 
-    <ProgressBar
-        android:id="@+id/progressbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="64dp"
-        android:visibility="gone" />
 </LinearLayout>
